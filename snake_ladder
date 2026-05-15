@@ -1,0 +1,7 @@
+from PIL import Image
+
+def show_board():
+    img = Image.open('SnakeLadder.jpg')
+    img.show()
+
+show_board()    
