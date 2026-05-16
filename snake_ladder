@@ -122,6 +122,33 @@ def play():
             if count1==100:
                 print(p1,"Won!!!!")
                 break
+            if dice==6:
+                start=input(f"{p1} to play again as dice rolled 6, Enter roll to roll the dice: ")
+                l=0
+                s=0
+                if start=="roll":
+                    dice=random.randint(1,6)
+
+                    print("your dice roll gave the number: ", dice)
+                    count1=dice+count1
+
+                    check_ladder(count1)
+
+                    check_snake(count1)
+
+                    if l==1:
+                        print("you climbed the ladder")
+                        count1=check_ladder(count1)
+
+                    if s==1:
+                        print("snake got you")
+                        count1=check_snake(count1)
+
+                    print("your pawn is on", count1)
+                    if count1==100:
+                        print(p1,"Won!!!!")
+                        break
+                
         
 
         start=input(f"{p2} to play, Enter roll to roll the dice: ")
@@ -147,7 +174,35 @@ def play():
             if count2==100:
                 print(p2,"Won!!!!")
                 break
+            if dice==6:
+                
+                start=input(f"{p2} to play again as dice rolled 6, Enter roll to roll the dice: ")
+                l=0
+                s=0
+                if start=="roll":
+                    dice=random.randint(1,6)
+
+                    print("your dice roll gave the number: ", dice)
+                    count2=dice+count2
+
+                    check_ladder(count1)
+
+                    check_snake(count1)
+
+                    if l==1:
+                        print("you climbed the ladder")
+                        count2=check_ladder(count1)
+
+                    if s==1:
+                        print("snake got you")
+                        count2=check_snake(count1)
+
+                    print("your pawn is on", count1)
+                    if count2==100:
+                        print(p2,"Won!!!!")
+                        break
+
+            
     
 show_board()
-play()
-    
+play()   
