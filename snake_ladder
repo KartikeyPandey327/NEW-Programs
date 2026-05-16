@@ -1,7 +1,153 @@
+import random
+
 from PIL import Image
+
+l=0
+s=0
 
 def show_board():
     img = Image.open('SnakeLadder.jpg')
     img.show()
 
-show_board()    
+def check_ladder(count):
+    global l
+    if count==80:
+        count=100
+        l +=1
+        return count
+    elif count==71:
+        count=91
+        l +=1
+        return count
+    elif count==51:
+        count=67
+        l +=1
+        return count
+    elif count==28:
+        count=84
+        l +=1
+        return count
+    elif count==21:
+        count=42
+        l +=1
+        return count
+    elif count==9:
+        count=31
+        l +=1
+        return count
+    elif count==4:
+        count=14
+        l +=1
+        return count
+    elif count==1:
+        count=38
+        l +=1
+        return count
+    else :
+        count=count
+        
+    
+def check_snake(count):
+    global s
+    if count==98:
+        count=79
+        s +=1
+        return count
+    elif count==95:
+        count=75
+        s +=1
+        return count
+    elif count==93:
+        count=73
+        s +=1
+        return count
+    elif count==87:
+        count=24
+        s +=1
+        return count
+    elif count==64:
+        count=60
+        s +=1
+        return count
+    elif count==62:
+        count=19
+        s +=1
+        return count
+    elif count==54:
+        count=34
+        s +=1
+        return count
+    elif count==17:
+        count=7
+        s +=1
+        return count
+    else :
+        count=count
+        
+
+def play():
+    global s
+    global l
+    p1=input("Enter the name of player 1: ")
+    p2=input("Enter the name of player 2: ")
+
+    count1=0
+    count2=0
+
+    while (count1<100 or count2<100):
+        
+        
+        start=input(f"{p1} to play, Enter roll to roll the dice: ")
+        l=0
+        s=0
+        if start=="roll":
+            dice=random.randint(1,6)
+
+            print("your dice roll gave the number: ", dice)
+            count1=dice+count1
+
+            check_ladder(count1)
+
+            check_snake(count1)
+
+            if l==1:
+                print("you climbed the ladder")
+                count1=check_ladder(count1)
+
+            if s==1:
+                print("snake got you")
+                count1=check_snake(count1)
+
+            print("your pawn is on", count1)
+            if count1==100:
+                print(p1,"Won!!!!")
+                break
+        
+
+        start=input(f"{p2} to play, Enter roll to roll the dice: ")
+        l=0
+        s=0
+        if start=="roll":
+            dice=random.randint(1,6)
+
+            print("your dice roll gave the number: ", dice)
+            count2=dice+count2
+
+            check_ladder(count2)
+
+            check_snake(count2)
+
+            if l==1:
+                count2=check_ladder(count2)
+
+            if s==1:
+                count2=check_snake(count2)
+
+            print("your pawn is on", count2)
+            if count2==100:
+                print(p2,"Won!!!!")
+                break
+    
+show_board()
+play()
+    
