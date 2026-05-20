@@ -1,0 +1,22 @@
+import random
+import matplotlib.pyplot as plt
+x=[]
+y=[]
+account=0
+for i in range(365):
+    x.append(i+1)
+    guess=random.randint(1,10)
+    lucky_draw=random.randint(1,10)
+    
+    
+
+    if guess==lucky_draw:
+        account=account+900-100
+    else:
+        account=account-100
+    y.append(account)
+print(account)
+
+plt.plot(x,y)
+plt.axhline(y=0, color='r', linestyle='--')
+plt.show()
